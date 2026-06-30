@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Servidores - Nazaret Central</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para la vista de administración */
+        .admin-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #004d99;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .name-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .name-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .name-item:last-child {
+            border-bottom: none;
+        }
+        .name-item span {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        .btn-delete {
+            background-color: #e3002b;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-edit {
+            background-color: #ffc107;
+            color: #333;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #004d99;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Panel de Control - Servidores</h1>
+    </header>
+
+    <div class="admin-container">
+        <a href="index.html" class="nav-link">← Volver al Croquis</a>
+        
+        <h2>Gestionar Listado de Nombres</h2>
+        
+        <div class="form-group">
+            <input type="hidden" id="serverId">
+            <input type="text" id="serverName" placeholder="Nombre completo del servidor...">
+            <button id="btnSave">Agregar</button>
+        </div>
+
+        <ul id="listServers" class="name-list">
+            </ul>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
