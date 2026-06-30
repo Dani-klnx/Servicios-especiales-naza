@@ -8,6 +8,27 @@ body {
     align-items: center;
 }
 
+.admin-nav-button {
+    padding: 12px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: 100%; 
+    font-size: 1.1em;
+    margin-top: 15px; 
+    border: none;
+    display: block;
+    font-weight: bold;
+    background-color: #004d99; /* Azul igual que el header */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s;
+}
+
+.admin-nav-button:hover {
+    background-color: #003366;
+}
 header {
     width: 100%; 
     text-align: center; 
