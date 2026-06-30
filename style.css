@@ -1,0 +1,282 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; 
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+header {
+    width: 100%; 
+    text-align: center; 
+    padding: 15px;
+    background-color: #004d99; 
+    color: white;
+}
+
+.controls-container {
+    display: flex; 
+    justify-content: space-around; 
+    gap: 20px;
+    width: 95%; 
+    max-width: 1400px; 
+    margin: 20px 0;
+    padding: 20px; 
+    background-color: white; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.control-box { 
+    flex: 1; 
+    min-width: 300px; 
+    padding: 15px; 
+    border-right: 1px solid #eee; 
+}
+.control-box:last-child { border-right: none; }
+.control-box h2 { 
+    color: #004d99; 
+    border-bottom: 2px solid #ccc; 
+    padding-bottom: 5px; 
+    margin-top: 0;
+}
+
+.selector-group { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px; 
+}
+.name-selector, .date-selector, .selector-devocional { 
+    padding: 8px 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    width: 200px;
+    font-size: 14px;
+}
+
+/* ─── Working area ─────────────────────────────────────────────────────────── */
+#workingArea {
+    width: 95%;
+    max-width: 1400px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* 
+  blueprintScaler: JS sets width/height to match the VISUAL size of the
+  scaled blueprint, so the page layout respects the actual displayed size.
+  overflow:hidden clips anything outside the scaled visual area.
+*/
+#blueprintScaler {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ─── Blueprint — fixed at 1300×700, scaled by JS via transform ────────────── */
+#croquisBlueprint {
+    width: 1300px;
+    height: 700px;
+    background-color: #fff;
+    border: 5px solid #000;
+    position: relative;
+    overflow: hidden;
+    background-image: url("Diseño.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform-origin: top left;
+    /* transform: scale(X) is set by JS */
+}
+
+/* ─── Header texts ─────────────────────────────────────────────────────────── */
+#croquisBlueprint .devocional-text {
+    position: absolute;
+    top: 30px; left: 40px;
+    color: #e3002b;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#croquisBlueprint .especial-text {
+    position: absolute;
+    top: 55px; left: 40px;
+    color: #e3002b;
+    font-size: 18px;
+    font-weight: bold;
+}
+#croquisBlueprint .time-text {
+    position: absolute;
+    top: 30px; right: 40px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+#croquisBlueprint .date-text {
+    position: absolute;
+    top: 55px; right: 40px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+#croquisBlueprint .title-croquis { 
+    position: absolute; 
+    top: 85px; left: 40px; 
+    font-size: 28px;
+    font-weight: 900; 
+    color: #000;
+    text-transform: uppercase;
+    z-index: 5;
+}
+
+/* ─── Sidebar lists — positioned at 840px inside 1300px blueprint ─────────── */
+#croquisBlueprint .list-container { 
+    position: absolute; 
+    z-index: 10; 
+    left: 840px; 
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+#croquisBlueprint .list-planta-baja { top: 140px; width: 260px; }
+#croquisBlueprint .list-planta-alta { top: 380px; width: 420px; }
+
+.list-title { 
+    font-weight: bold; 
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    border-bottom: 2px solid;
+    padding-bottom: 4px;
+}
+.title-pb { color: #0056b3; border-color: #0056b3; }
+.title-pa { color: #ffc107; border-color: #ffc107; }
+
+.list-items { display: flex; flex-wrap: wrap; }
+.list-planta-baja .list-items { flex-direction: column; }
+
+.pa-columns { display: flex; gap: 15px; }
+.pa-col-left, .pa-col-right { flex: 1; display: flex; flex-direction: column; }
+
+.list-item { 
+    display: flex; 
+    align-items: center; 
+    height: 24px;
+    margin-bottom: 6px;
+}
+.item-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    color: white;
+}
+.item-pb .item-number     { background-color: #0056b3; }
+.item-pa .item-number     { background-color: #ffc107; color: #333; }
+.item-rondin .item-number { background-color: #e3002b; }
+
+.item-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    white-space: nowrap;
+}
+
+/* ─── Buttons ──────────────────────────────────────────────────────────────── */
+.preview-button, .download-main-button, .reset-button {
+    padding: 12px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: 100%; 
+    font-size: 1.1em;
+    margin-bottom: 12px; 
+    border: none;
+    display: block;
+    font-weight: bold;
+}
+.preview-button       { background-color: #008cba; color: white; }
+.download-main-button { background-color: #e3002b; color: white; }
+.reset-button         { background-color: #666;    color: white; }
+
+/* ─── Modal ────────────────────────────────────────────────────────────────── */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000;
+    left: 0; top: 0; 
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9); 
+    justify-content: center; 
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.modal-content {
+    background: white; 
+    padding: 20px; 
+    border-radius: 10px;
+    width: 95%; 
+    max-width: 760px;
+    max-height: 90vh; 
+    overflow: auto; 
+    text-align: center;
+    box-sizing: border-box;
+}
+.close-button { 
+    float: right; 
+    font-size: 36px; 
+    cursor: pointer; 
+    color: #333; 
+    font-weight: bold; 
+    line-height: 1;
+}
+#modalCroquisView { 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+/* ─── Responsive: controls only, never the blueprint ──────────────────────── */
+@media (max-width: 768px) {
+    .controls-container {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    .control-box {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        min-width: 100%;
+        padding: 10px;
+    }
+    .control-box:last-child { border-bottom: none; }
+    .selector-group {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+    .name-selector, .date-selector, .selector-devocional {
+        width: 100%;
+        margin-top: 5px;
+    }
+    .preview-button, .download-main-button, .reset-button {
+        padding: 15px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    .modal-content {
+        padding: 10px;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo 3 Servidores - Nazaret Central</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Programa Servidores Servicios Especiales</h1>
+    </header>
+
+    <div class="controls-container">
+        <div class="control-box">
+            <h2>1. Configuración de Cabecera</h2>
+            <div class="selector-group">
+                <label>Devocional:</label>
+                <select id="devocionalType" class="selector-devocional">
+                    <option value="">-- Seleccionar --</option>
+                    <option value="1º DEVOCIONAL">1º DEVOCIONAL</option>
+                    <option value="2º DEVOCIONAL">2º DEVOCIONAL</option>
+                    <option value="3º DEVOCIONAL">3º DEVOCIONAL</option>
+                </select>
+            </div>
+            <div class="selector-group">
+                <label>Evento Especial:</label>
+                <select id="especialType" class="selector-devocional">
+                    <option value="">-- Seleccionar --</option>
+                    <option value="CONCIERTO">CONCIERTO</option>
+                    <option value="DEVOCIONAL NAVIDEÑO">DEVOCIONAL NAVIDEÑO</option>
+                    <option value="DEVOCIONAL DE FIN DE AÑO">DEVOCIONAL DE FIN DE AÑO</option>
+                    <option value="SEMINARIO">SEMINARIO</option>
+                </select>
+            </div>
+            <div class="selector-group">
+                <label>Hora:</label>
+                <input type="time" id="croquisTime" class="date-selector">
+            </div>
+            <div class="selector-group">
+                <label>Fecha:</label>
+                <input type="date" id="croquisDate" class="date-selector">
+            </div>
+        </div>
+
+        <div class="control-box">
+            <h2>2. Asignar Nombres</h2>
+            <div id="nameSelectors"></div>
+        </div>
+        
+        <div class="control-box">
+            <h2>3. Generar y Descargar</h2>
+            <button id="previewCroquis" class="preview-button">Ver Vista Previa</button>
+            <button id="downloadCroquis" class="download-main-button">Descargar PNG</button>
+            <button id="resetData" class="reset-button">Limpiar Todo</button>
+        </div>
+    </div>
+    
+    <div id="workingArea">
+    <div id="blueprintScaler">
+    <div id="croquisBlueprint" class="croquis-blueprint croquis-background">
+        <!-- TODOS los elementos de visualización DENTRO del blueprint -->
+        <span id="displayDevocional" class="devocional-text"></span>
+        <span id="displayEspecial" class="especial-text"></span>
+        <span id="displayTime" class="time-text"></span>
+        <span id="displayDate" class="date-text"></span>
+        <div class="title-croquis">IGLESIA NAZARET CENTRAL</div>
+        
+        <!-- Listados también DENTRO -->
+        <div id="list-container-pb" class="list-container list-planta-baja"></div>
+        <div id="list-container-pa" class="list-container list-planta-alta"></div>
+    </div>
+    </div>
+</div>
+
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Vista Previa del Croquis</h2>
+            <div id="modalCroquisView"></div>
+            <button id="modalDownloadButton" class="download-main-button">Descargar desde aquí</button>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
